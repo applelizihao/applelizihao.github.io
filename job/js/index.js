@@ -116,10 +116,12 @@ window.onscroll = function () {
 //===========================================================================//
 //点击事件
 $('#video-icon').click(function () {
+    $('video')[0].play()
     $('.zzc').css("display", "block")
 })
 $('#close-video').click(function () {
     $('.zzc').css("display", "none")
+    $('video')[0].pause()
 })
 
 

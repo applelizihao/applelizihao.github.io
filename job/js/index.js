@@ -15,7 +15,7 @@ $('.Our-Team-right').eq(0).css("transform", "translateX(500px)")
 
 $('.Our-Team-left').eq(1).css("transform", "translateX(500px)")
 $('.Our-Team-right').eq(1).css("transform", "translateX(-500px)")
-
+//滚动事件
 window.onscroll = function () {
     var top = document.documentElement.scrollTop
 

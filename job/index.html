@@ -15,10 +15,11 @@
 <body>
     <div class="zzc">
         <div class="zzc-flex">
-            <video controls="controls" src="http://www.runoob.com/try/demo_source/movie.mp4"></video>
-       <div style="width:100%;">
-        <i id="close-video" class="fa fa-close"></i>
-    </div>
+            <video controls="controls"
+                src="http://ugc-vliveochy.tc.qq.com/vhot2.qqvideo.tc.qq.com/AYpn0TmYCHiG6O5QB0l7600rg4XF678rAZDMA4Ov1_ec/uwMROfz0r5zBYaQXGdGnC2dfDmYx2Y1cbZDd-0hyJjaVDvD8/r0543bgom4x.mp4?sdtfrom=v1105&guid=5424dbf19e0a63c7b78a51c24594781b&vkey=47754C02B51B094B56B50DD7D2D69AA18E4866BF976592BF1C92978037EDE2EA24747E446E6366943D681B45E839242FFE443422885DCA024F7830DA7A1C3F0681CAB61D996B10A809FDA3C4FD86DD377E651E42096A0584CC0CFE0A861D1EFEACA87E3D2CC1F27595C03E28C39A41605591DD7BDBA24082&ocid=484270857"></video>
+            <div style="width:100%;">
+                <i id="close-video" class="fa fa-close"></i>
+            </div>
         </div>
     </div>
     <div id="HOME" class="header">
@@ -39,11 +40,11 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#HOME">Home</a></li>
-                        <li><a href="#ABOUT">ABOUT</a></li>
-                        <li><a href="#PRACTICE-AREAS">PRACTICE-AREAS</a></li>
-                        <li><a href="#OUR-TEANM">OUR TEANM</a></li>
-                        <li><a href="#CONTACT">CONTACT</a></li>
+                        <li><a id="Home-A" class="active">Home</a></li>
+                        <li><a id="ABOUT-A">ABOUT</a></li>
+                        <li><a id="PRACTICE-AREAS-A">PRACTICE-AREAS</a></li>
+                        <li><a id="OUR-TEANM-A">OUR TEANM</a></li>
+                        <li><a id="CONTACT-A">CONTACT</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>
@@ -269,20 +270,19 @@
                                 <a href="">+ 1235 2355 98</a></li>
                             <li>
                                 <i class="glyphicon glyphicon-envelope"></i>
-                                <a href="">info@example.com</a></li>
+                                <a href="mailto:to?subject=subject&cc=cc&body=body">info@example.com</a></li>
                             <li><i class="glyphicon glyphicon-globe"></i>
-                                <a href="">http://example.com</a></li>
+                                <a href="http://example.com">http://example.com</a></li>
                         </div>
 
                         <div class="biaodan col-xs-12 col-sm-12 col-md-7 col-lg-7">
-
-                            <input type="text" name="" id="input" class="form-control" value="" placeholder="Name"
+                            <input type="text" name="" id="t1" class="form-control" value="" placeholder="Name"
                                 required="required" pattern="" title="">
-                            <input type="text" name="" id="input" class="form-control" value="" placeholder="Email"
+                            <input type="email" name="" id="t2" class="form-control" value="" placeholder="Email"
                                 required="required" pattern="" title="">
-
-                            <textarea name="" id="input" class="form-control" rows="3" required="required"
+                            <textarea name="" id="tx" class="form-control" rows="3" required="required"
                                 placeholder="Message"></textarea>
+                            <button id="Send" type="button" class="btn btn-success">Send Message</button>
                         </div>
                     </div>
                 </form>
@@ -304,6 +304,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="dot">
+        <i class="glyphicon glyphicon-upload"></i>
     </div>
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="js/index.js"></script>

@@ -18,17 +18,20 @@
     div.Contact-Us .container .Contact-Us p {
         width: auto;
     }
-    div.footer .container .row .footer-right{
+
+    div.footer .container .row .footer-right {
         margin-top: 2rem;
         text-align: center;
     }
 }
-@media screen and (max-width:767px){
-    .navbar-nav{
+
+@media screen and (max-width:767px) {
+    .navbar-nav {
         text-align: center;
-        background: black;
+        background: lightgray;
     }
 }
+
 @media screen and (max-width:1200px) {
     div.Contact-Us .container .Contact-Us-form form .row .biaodan {
         padding: 1rem;
@@ -49,29 +52,34 @@ body,
 html {
     height: 100%;
 }
-.zzc{
+
+.zzc {
     display: none;
     position: fixed;
     z-index: 999;
     width: 100%;
     height: 100%;
     top: 0;
-    left:0;
+    left: 0;
     background: rgba(35, 35, 35, 0.8);
-    .zzc-flex{
+
+    .zzc-flex {
         width: 100%;
         height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        video{
-            height:80%;
+
+        video {
+            height: 80%;
             height: 80%;
         }
-        div{
+
+        div {
             text-align: center;
-            i{
+
+            i {
                 font-size: 5rem;
                 color: white;
                 cursor: pointer;
@@ -79,15 +87,21 @@ html {
         }
     }
 }
+
 .header {
-    position: absolute;
+    position: fixed;
     width: 100%;
     top: 2rem;
     z-index: 999;
-
+    align-items: center;
+    padding: 1rem 0;
+    transition: all 1s;
     .container {
         .navbar-default {
+            margin: 0;
             .navbar-header {
+        
+
                 .navbar-brand {
                     color: white;
                     font-weight: bold;
@@ -102,17 +116,17 @@ html {
 
                 .navbar-nav {
                     li {
-
-                        &:nth-child(1) {
-                            a {
-                                color: white;
-                            }
-                        }
-
                         a {
+                            cursor: pointer;
+                            transition: all 1s;
                             color: rgba(255, 255, 255, 0.5);
                             font-size: 1.5rem;
-
+                            &.active{
+                                color: white;
+                            }
+                            &.mg{
+                                color:#7ED321;
+                            }
                             &:hover {
                                 color: white;
                             }
@@ -491,6 +505,12 @@ html {
                             resize: none;
                             height: 25rem;
                         }
+                        button{
+                            margin-top: 2rem;
+                            padding: 1rem 2.5rem;
+                            background: #7ED321;
+                            border: 2px solid #7ED321;
+                        }
                     }
                 }
             }
@@ -520,15 +540,46 @@ html {
 
             .footer-right {
                 text-align: right;
-                i{
+
+                i {
+                    cursor: pointer;
                     color: #7ED321;
                     font-size: 2rem;
-                    &:nth-child(1){
+
+                    &:nth-child(1) {
                         margin-left: 0;
                     }
+
                     margin-left: 2rem;
                 }
-            }   
+            }
         }
+    }
+}
+
+.dot {
+    position: fixed;
+    width: 4rem;
+    height: 4rem;
+    bottom: 4rem;
+    right: 4rem;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
+    display: none;
+    text-align: center;
+    background: lightblue;
+
+    &:hover {
+        i {
+            transform: scale(1.6)
+        }
+    }
+
+    i {
+        transition: all .5s;
+        font-size: 3rem;
+        line-height: 4rem;
+        color: white;
     }
 }

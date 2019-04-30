@@ -1,0 +1,264 @@
+@media screen and (max-width:991px) {
+    div.tabs-content .container .row .picture-Groups .showpic .pic-btn{
+        margin-top: 2rem;
+    }
+    div.header .container .header-content h1 {
+        text-align: center;
+        font-size: 6.4rem;
+    }
+
+    div.header .container .header-content h2 {
+        font-size: 3rem;
+    }
+
+    div.About-Vanilla .container .row .About-Vanilla-right {
+        .card-Groups {
+            .card {
+                margin-top: 3rem;
+
+                .card-pd {
+                    width: 80%;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+
+    div.About-Vanilla .container .row .About-Vanilla-left {
+        h3 {
+            text-align: center;
+        }
+
+        hr {
+            float: none;
+        }
+
+        p {
+            padding: 1rem 6rem;
+            text-align: center;
+        }
+        li{
+            padding: 0rem 6rem;
+        }
+        button{
+            margin: 0 auto;
+        }
+    }
+
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1rem;
+    overflow-x: hidden;
+}
+
+body,
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+.hr {
+    background: #ff7d27;
+    height: 0.3rem;
+    border: none;
+    width: 5rem;
+}
+
+.background {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+li {
+    list-style: none;
+}
+
+.header {
+    height: 100%;
+    .background;
+    background-image: url('../img/header.jpg');
+
+    .container {
+        height: 100%;
+
+        .header-content {
+            flex-wrap: wrap;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+
+            h1 {
+                width: 100%;
+                color: white;
+                font-weight: bold;
+                font-size: 15rem;
+            }
+
+            h2 {
+                margin-top: 0;
+                font-weight: bold;
+                width: 100%;
+                color: white;
+                font-size: 5rem;
+
+                em {
+                    color: #ff7d27;
+                    margin-right: 2rem;
+                }
+            }
+
+            button {
+                margin-top: 3rem;
+                padding: 1.5rem;
+                background: #ff7d27;
+            }
+        }
+    }
+}
+
+.About-Vanilla {
+    .background;
+    background-image: url('../img/2nd-section.jpg');
+    box-sizing: border-box;
+    padding: 10rem 0;
+
+    .container {
+        .row {
+            .About-Vanilla-left {
+                color: white;
+
+                h3 {
+                    margin: 1rem 0;
+                    font-size: 3rem;
+                }
+
+                hr {
+                    background: #ff7d27;
+                    height: 0.3rem;
+                    border: none;
+                    width: 5rem;
+                    float: left;
+                }
+
+                p {
+                    font-size: 1.5rem;
+                    line-height: 2;
+                }
+
+                li {
+                    font-weight: bold;
+                    padding: 0.8rem 0;
+                    font-size: 1.5rem;
+                }
+
+                button {
+                    margin-top: 2rem;
+                    background: #ff7d27;
+                    padding: 1rem;
+                    font-size: 1.2rem;
+                }
+            }
+
+            .About-Vanilla-right {
+                .card-Groups {
+                    .card {
+                        .card-pd {
+                            padding: 3.3rem;
+                            margin-bottom: 3rem;
+                            color: white;
+                            text-align: center;
+                            background: rgba(0, 0, 0, 0.5);
+
+                            h4 {
+                                font-size: 2.2rem;
+                            }
+
+                            hr {
+                                .hr
+                            }
+
+                            p {
+                                font-size: 1.5rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.photo {
+    .background;
+    background-image: url('/sea/img/3rd-section.jpg');
+    padding: 20rem 0;
+}
+
+.tabs-content {
+    .background;
+    background-image: url('/sea/img/4th-section.jpg');
+    padding: 10rem 0;
+
+    .container {
+        .row {
+            .picture-Groups {
+          
+             justify-content: center;
+    
+                .showpic {
+             
+                    .pic-img {
+                        height: 70%;
+                        img {
+                            height: 100%;
+                            width: 100%;
+                        }
+                    }
+                    .pic-p{
+                        p{
+                            padding: 2rem;
+                            color: white;
+                            text-align: center;
+                            font-size: 1.5rem;
+                            background: rgba(0, 0, 0, 0.5);
+                        }
+                    }
+                    .btn-Groups{
+                        color: white;
+                        justify-content: center;
+                        align-content: center;
+                   
+                    }
+                    .pic-btn{
+                        text-align: center;
+                        padding:1rem 1rem;
+                        border: 0.5rem solid white;
+                        margin: 0 1rem;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        font-weight: bold;
+                        &:hover{
+                            color: #ff7d27;
+                        }
+                        &.active{
+                            border-color: #ff7d27;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

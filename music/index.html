@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="header">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="music col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <input v-on:click="currentTimefn" type="search" class="form-control" v-model.trim="search">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="card-groups col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <template v-for="(item, index) in songList">
+                            <div :data-index="index" v-on:click.stop="cardfn" class="card">
+                                <h2 :data-index="index">
+                                    {{item.songName}}
+                                </h2>
+                                <span :data-index="index">{{item.singer[0].singerName}}</span>
+                            </div>
+                        </template>
+                        <div style="height:10rem"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-song">
+            <div class="container-fluid">
+
+                <div class="row">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+
+                    </div>
+                    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding:2rem 0">
+                            <span style="position: absolute;width:100%;display: block;height: 10px;background: lightslategray;border-radius: 1rem">
+                                <i v-bind:style="{width:(audio.currentTime/audio.max)*100+'%'}" style="position: relative;;width:1rem;height: 1rem;display: block;background: lightskyblue;border-radius: 1rem">
+                                    <i style="width:1rem;height:1rem;display: block;background: whitesmoke;position: absolute;top: 0;right: -0.5rem;border-radius: 1rem"></i>
+                                </i>
+                            </span>
+                            <input style="position: absolute;top: 0rem;opacity: 1;height: 3rem;opacity: 0;" type="range" v-on:click="currentTimefn" v-model="audio.currentTime" :max="audio.max">
+
+                        </div>
+                        <button v-on:click="playfn" type="button" class="btn btn-success">
+                            <i style="font-size:2rem"
+                                v-bind:class="[autoplaybe?'glyphicon glyphicon-play':'glyphicon glyphicon-pause']"></i>
+                        </button>
+                        <b style="font-size:1.5rem">{{nowsongname}}</b>
+                        <sub>{{nowsongautor}}</sub>
+                        <audio v-on:timeupdate="canplay" :src="playsrc" ref="adi">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                search: '说谎',
+                nowsongname: null,
+                nowsongautor: null,
+                songList: null,
+                playsrc: null,
+                autoplaybe: true,
+                audio: {
+                    max: 300,
+                    currentTime: 0
+                }
+            },
+            methods: {
+                cardfn: function (event) {
+                    let index = event.target.dataset.index
+                    console.log(this.nowsongname = this.songList[index].songName)
+                    console.log(this.nowsongautor = this.songList[index].singer[0].singerName)
+                    console.log(event.target)
+                    let songMid = songList[index].songMid
+                    fetch(`https://music.niubishanshan.top/api/v2/music/songUrllist/${songMid}`)
+                        .then(response => response.json())
+                        .then(result => {
+                            this.playsrc = result.data
+                        })
+                        .then(() => {
+                            this.autoplaybe = false;
+                            return this.$refs.adi.play();
+                            this.$refs.adi.play()
+                        }).then(() => {
+                            console.log(this.$refs.adi.duration)
+                            this.audio.max = this.$refs.adi.duration
+                        })
+                },
+                canplay: function (event) {
+                    this.$refs.adi.play()
+                    this.audio.currentTime = this.$refs.adi.currentTime
+                },
+                playfn: function () {
+                    this.autoplaybe = !this.autoplaybe
+                    if (this.autoplaybe === true) {
+                        this.$refs.adi.pause()
+                    } else {
+                        this.$refs.adi.play()
+                    }
+                },
+                currentTimefn: function () {
+                    this.$refs.adi.currentTime = this.audio.currentTime
+                }
+
+            },
+            created() {
+                fetch(`https://music.niubishanshan.top/api/v2/music/search/${this.search}/1/10`)
+                    .then(response => response.json())
+                    .then(result => {
+                        songList = result.data.songList
+                        this.songList = songList
+                        console.log(this.songList)
+                    })
+            },
+            watch: {
+                search: function () {
+                    if (this.search === '') {
+                        return
+                    }
+                    fetch(`https://music.niubishanshan.top/api/v2/music/search/${this.search}/1/10`)
+                        .then(response => response.json())
+                        .then(result => {
+                            songList = result.data.songList
+                            this.songList = songList
+                            console.log(this.songList)
+                        })
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

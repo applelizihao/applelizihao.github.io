@@ -15,29 +15,32 @@
     <div id="app">
         <div class="header">
             <div class="container-fluid">
-            <div class="row">
-                <div class="left col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <i class="glyphicon glyphicon-th-list"></i>
-                </div>
-                <div class="center col-xs-8 col-sm-8 col-md-8 col-lg-8">
-                    <header-list  v-on:getfn="chosefn(index)" :item="item.text" :index="index" v-for="(item, index) in headerlist">
-                    </header-list>
-                </div>
-                <div class="right col-xs-2 col-sm-2 col-md-2 col-lg-2">
-                    <i class="glyphicon glyphicon-plus-sign"></i>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <input  id="search-input" type="search" class="form-control" placeholder="搜索">
+                <div class="row">
+                    <div class="left col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <i class="glyphicon glyphicon-th-list"></i>
+                    </div>
+                    <div class="center col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        <header-list v-on:getfn="chosefn(index)" :item="item.text" :index="index"
+                            v-for="(item, index) in headerlist">
+                        </header-list>
+                    </div>
+                    <div class="right col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <i class="glyphicon glyphicon-plus-sign"></i>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <input id="search-input" type="search" class="form-control" placeholder="搜索">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <component :is="activeheaderlist"></component>
-</div>
+        <component :is="activeheaderlist"></component>
 
+
+
+    </div>
+    <script src="js/shouye.js"></script>
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/shouye.js"></script>
 </body>
 
 </html>

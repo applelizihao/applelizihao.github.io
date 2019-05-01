@@ -1,0 +1,54 @@
+@color1: #31c27c;
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1rem;
+}
+
+#app {
+    .header {
+        color: white;
+        padding: 1rem;
+        background: @color1;
+        font-size: 1.5rem;
+        .container-fluid {
+            .row {
+                .left {
+                    i{
+                        cursor: pointer;
+                    }
+                }
+
+                .center {
+                    display: flex;
+                    justify-content: first baseline;
+                    justify-content: space-between;
+
+                    span {
+                        cursor: pointer;
+                    }
+                }
+
+                .right {
+                    text-align: right;
+                    i{
+                        cursor: pointer;
+                    }
+                }
+                #search-input{
+                    border: none;
+                    margin-top: 1rem;
+                    height: 2rem;
+                    background: rgba(111, 111, 111, 0.6);
+                    &::-webkit-input-placeholder{
+                        text-align: center;
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

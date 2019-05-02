@@ -15,8 +15,8 @@ Vue.component('my', {
 Vue.component('music', {
     data: function () {
         return {
-            slider: null,   //获取轮播图图片
-            top:null    //获取排行榜
+            slider: null, //获取轮播图图片
+            top: [] //获取排行榜
         }
     },
     created() {
@@ -29,8 +29,14 @@ Vue.component('music', {
         fetch('https://music.niubishanshan.top/api/v2/music/toplist')
             .then(response => response.json())
             .then(result => {
-                this.top=result.data
-                console.log(this.top)
+                result.data.forEach(element => {
+                    fetch(`https://music.niubishanshan.top/api/v2/music/songList/${element.id}`)
+                    .then(response=>response.json())
+                    .then(result=>{
+                     this.top.push(result.data)
+                    })
+                  
+                })
             })
     },
     template: `
@@ -55,7 +61,7 @@ Vue.component('music', {
     <div class="container-fluid">
     <div class="row">
         <li class="col-xs-12 col-sm-6 col-md-6 col-lg-6" v-for="(item,index) in top">
-        <h3>{{item.title}}</h3>
+        <h3>{{item.topInfo.listName}}</h3>
             <div class="row">
             <span  v-on:click="clicksongfn" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" v-for="(item,index) in item.songList">{{item.songName}}
             <p class="singername">{{item.singerName}}</p>
@@ -67,11 +73,13 @@ Vue.component('music', {
     </div>
 </div>
 `,
-methods: {
-    clicksongfn:function () { 
-        alert('xxx')
-     }
-},
+
+ 
+    methods: {
+        clicksongfn: function () {
+            alert('xxx')
+        }
+    },
 })
 Vue.component('find', {
     template: '<li>find</li>'

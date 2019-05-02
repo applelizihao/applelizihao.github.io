@@ -1,5 +1,6 @@
+
 Vue.component('player-song', {
-    props: ['playsong'],
+    props: ['playsong', 'nowplayername', 'nowplayersongname'],
     template: `
     <div>
     <div class="marginplayer"></div>
@@ -11,8 +12,8 @@ Vue.component('player-song', {
                         alt="">
                 </div>
                 <div class="song-info col-xs-5 col-sm-9 col-md-9 col-lg-9">
-                    <p class="song-name">每一句都很甜</p>
-                    <p class="song-author">新乐城府</p>
+                    <p class="song-name">{{nowplayersongname}}</p>
+                    <p class="song-author">{{nowplayername}}</p>
                 </div>
                 <div class="console col-xs-5 col-sm-2 col-md-2 col-lg-2">
                     <i class="play glyphicon glyphicon-play"> </i>
@@ -20,10 +21,15 @@ Vue.component('player-song', {
                 </div>
             </div>
         </div>
-        <audio autoplay :src="playsong"></audio>
+        <audio ref="adi" v-on:error="errorplay" :src="playsong"></audio>
     </div>
     </div>
-    `
+    `,
+    methods: {
+        errorplay: function () {
+            alert('因为版权问题或者其他因素，导致无法播放')
+        }
+    }
 })
 
 //获取排行榜音乐组件
@@ -45,11 +51,14 @@ Vue.component('header-song', {
                 this.imgsrc = result.data.topInfo.picAlbum
                 this.listName = result.data.topInfo.listName
                 this.updateTime = result.data.updateTime
-                console.log(this.songList)
+                // console.log(this.songList)
             })
     },
     template: `
     <div class="header-song">
+    <div class="top-nav">
+    <i v-on:click="$emit('getback')" class="glyphicon glyphicon-menu-left"></i>
+    </div>
     <div class="header-img">
         <div class="bg" v-bind:style="{backgroundImage: 'url(' + imgsrc + ')' }">
             <div class="Cover-up">
@@ -62,7 +71,7 @@ Vue.component('header-song', {
     </div>
     <div class="container-fluid">
         <div class="row">
-            <li v-on:click="$emit('get',item.songMid)" v-for="(item,index) in songList">
+            <li v-on:click="$emit('get',item.songMid,item)" v-for="(item,index) in songList">
             <div class="song-left col-xs-2 col-sm-2 col-md-2 col-lg-2">
                <h5>{{index+1}}</h5>
             </div>
@@ -156,7 +165,9 @@ var app = new Vue({
     el: '#app',
     data: {
         playsong: {
-            src: ""
+            src: null,
+            nowplayername: '',
+            nowplayersongname: ''
         },
         songtop: {
             id: '4' //默认值空
@@ -175,16 +186,26 @@ var app = new Vue({
             headersong: true //默认值false
         }
     },
-    
     methods: {
+        goback: function () {
+            this.tabconsole.component = true
+            this.tabconsole.header = true
+            this.tabconsole.headersong = false
+        },
         //排行榜点击歌曲播放
-        clickchosesongli: function (index) {
+        clickchosesongli: function (index, item) {
             //赋值传过来的index
-            console.log(index)
+            // console.log(index)
+            // console.log(item)
+            this.playsong.nowplayersongname = item.songName
+            this.playsong.nowplayername = item.singer[0].singerName
             fetch(`https://music.niubishanshan.top/api/v2/music/songUrllist/${index}`)
                 .then(response => response.json())
                 .then(result => {
-                    this.playsong.src = result.data[0]
+                    this.playsong.src = result.data[0];
+                })
+                .then(() => {
+                    this.$refs.shit.$refs.adi.play()
                 })
             // https://music.niubishanshan.top/api/v2/music/songUrllist/
         },

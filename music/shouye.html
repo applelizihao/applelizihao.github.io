@@ -34,13 +34,8 @@
             </div>
         </div>
         <component v-on:getfn="clicksongfn" v-if="tabconsole.component" :is="activeheaderlist"></component>
-
-        <header-song v-on:get="clickchosesongli" v-bind:id="songtop.id" v-if="tabconsole.headersong"></header-song>
-
-
-
-        <player-song v-bind:playsong="playsong.src"></player-song>
-     
+        <header-song v-on:getback="goback" v-on:get="clickchosesongli" v-bind:id="songtop.id" v-if="tabconsole.headersong"></header-song>
+        <player-song  ref="shit" :nowplayername="playsong.nowplayername" :nowplayersongname="playsong.nowplayersongname" :playsong="playsong.src"></player-song>
     </div>
     <script src="js/shouye.js"></script>
     <script src="//code.jquery.com/jquery.js"></script>

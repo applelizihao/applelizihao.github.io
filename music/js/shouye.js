@@ -15,8 +15,12 @@ Vue.component('my', {
 Vue.component('music', {
     data: function () {
         return {
+<<<<<<< HEAD
             slider: null, //获取轮播图图片
             top: [] //获取排行榜
+=======
+            slider: null
+>>>>>>> parent of 400a7ca... 更新排行榜
         }
     },
     created() {
@@ -24,6 +28,7 @@ Vue.component('music', {
             .then(response => response.json())
             .then(result => {
                 this.slider = result.data.slider
+<<<<<<< HEAD
                 // console.log(this.slider)
             })
         fetch('https://music.niubishanshan.top/api/v2/music/toplist')
@@ -37,11 +42,12 @@ Vue.component('music', {
                     })
                   
                 })
+=======
+                console.log(this.slider)
+>>>>>>> parent of 400a7ca... 更新排行榜
             })
     },
-    template: `
-    <div>
-    <div id="carousel-id" class="carousel slide" data-ride="carousel">
+    template: `<div id="carousel-id" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li :class="[index===0?'active':'']" data-target="#carousel-id" :data-slide-to="index" v-for="(item,index) in slider"></li>    
     </ol>
@@ -56,6 +62,7 @@ Vue.component('music', {
     </div>
     <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
     <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+<<<<<<< HEAD
 </div>
     <div class="content">
     <div class="container-fluid">
@@ -80,6 +87,9 @@ Vue.component('music', {
             alert('xxx')
         }
     },
+=======
+</div>`
+>>>>>>> parent of 400a7ca... 更新排行榜
 })
 Vue.component('find', {
     template: '<li>find</li>'

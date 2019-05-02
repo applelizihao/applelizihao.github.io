@@ -35,11 +35,10 @@
         </div>
         <component v-on:getfn="clicksongfn" v-if="tabconsole.component" :is="activeheaderlist"></component>
         <header-song v-on:getback="goback" v-on:get="clickchosesongli" v-bind:id="songtop.id" v-if="tabconsole.headersong"></header-song>
-        <player-song  ref="shit" :nowplayername="playsong.nowplayername" :nowplayersongname="playsong.nowplayersongname" :playsong="playsong.src"></player-song>
+        <player-song v-on:togglefn="toggleactive" :playeractive="playsong.playeractive" ref="shit" :nowplayername="playsong.nowplayername" :nowplayersongname="playsong.nowplayersongname" :playsong="playsong.src"></player-song>
     </div>
     <script src="js/shouye.js"></script>
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
-
 </html>

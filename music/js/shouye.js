@@ -1,6 +1,5 @@
-
 Vue.component('player-song', {
-    props: ['playsong', 'nowplayername', 'nowplayersongname'],
+    props: ['playsong', 'nowplayername', 'nowplayersongname', 'playeractive'],
     template: `
     <div>
     <div class="marginplayer"></div>
@@ -16,12 +15,12 @@ Vue.component('player-song', {
                     <p class="song-author">{{nowplayername}}</p>
                 </div>
                 <div class="console col-xs-5 col-sm-2 col-md-2 col-lg-2">
-                    <i class="play glyphicon glyphicon-play"> </i>
-                    <i class="song-list glyphicon glyphicon-signal"></i>
+                    <i v-on:click="$emit('togglefn')" :class="[playeractive?'play glyphicon glyphicon-play':'play glyphicon glyphicon-pause']"></i>
+                    <i class="glyphicon glyphicon-signal"></i>
                 </div>
             </div>
         </div>
-        <audio ref="adi" v-on:error="errorplay" :src="playsong"></audio>
+        <audio ref="adi" autoplay v-on:error="errorplay" :src="playsong"></audio>
     </div>
     </div>
     `,
@@ -167,10 +166,11 @@ var app = new Vue({
         playsong: {
             src: null,
             nowplayername: '',
-            nowplayersongname: ''
+            nowplayersongname: '',
+            playeractive: true
         },
         songtop: {
-            id: '4' //默认值空
+            id: '' //默认值空
         },
         headerlist: [{
             text: '我的'
@@ -181,12 +181,20 @@ var app = new Vue({
         }],
         activeheaderlist: 'music',
         tabconsole: {
-            component: false, //默认值true
-            header: false, //默认值true
-            headersong: true //默认值false
+            component: true, //默认值true
+            header: true, //默认值true
+            headersong: false //默认值false
+        }
+    },
+    watch: {
+        'playsong.playeractive':function () { 
+          this.playsong.playeractive?this.$refs.shit.$refs.adi.pause():this.$refs.shit.$refs.adi.play()
         }
     },
     methods: {
+        toggleactive:function () { 
+            this.playsong.playeractive=!this.playsong.playeractive
+        },
         goback: function () {
             this.tabconsole.component = true
             this.tabconsole.header = true
@@ -205,7 +213,10 @@ var app = new Vue({
                     this.playsong.src = result.data[0];
                 })
                 .then(() => {
-                    this.$refs.shit.$refs.adi.play()
+                    return this.$refs.shit.$refs.adi.play()
+                })
+                .then(() => {
+                    this.playsong.playeractive = false
                 })
             // https://music.niubishanshan.top/api/v2/music/songUrllist/
         },
@@ -217,7 +228,7 @@ var app = new Vue({
             this.tabconsole.header = false
             this.tabconsole.headersong = true
         },
-
+        
         //activeheaderlist选择
         chosefn: function (index) {
             switch (index) {

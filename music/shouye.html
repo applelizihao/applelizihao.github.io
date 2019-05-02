@@ -13,7 +13,7 @@
 
 <body>
     <div id="app">
-        <div class="header">
+        <div v-if="tabconsole.header" class="header">
             <div class="container-fluid">
                 <div class="row">
                     <div class="left col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -33,9 +33,17 @@
                 </div>
             </div>
         </div>
-        <component :is="activeheaderlist"></component>
-<!-- 播放器 -->
-<div class="marginplayer"></div>
+        <component v-on:getfn="clicksongfn" v-if="tabconsole.component" :is="activeheaderlist"></component>
+
+        <header-song v-bind:id="songtop.id" v-if="tabconsole.headersong"></header-song>
+
+
+
+
+
+
+        <!-- 播放器 -->
+        <div class="marginplayer"></div>
         <div class="player">
             <div class="container-fluid">
                 <div class="row">

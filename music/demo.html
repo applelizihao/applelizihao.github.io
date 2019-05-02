@@ -15,7 +15,29 @@
 
 <body>
     <div id="app">
-        <div class="header-song">
+        <header-song></header-song>
+    </div>
+
+    <script>
+        Vue.component('header-song', {
+            data: function () {
+                return {
+                    imgsrc: '',
+                    listName: '',
+                    updateTime: ''
+                }
+            },
+            created() {
+                fetch('https://music.niubishanshan.top/api/v2/music/songList/4')
+                    .then(response => response.json())
+                    .then(result => {
+                        this.imgsrc = result.data.topInfo.picAlbum
+                        this.listName = result.data.topInfo.listName
+                        this.updateTime = result.data.updateTime
+                    })
+            },
+            template: `
+            <div class="header-song">
             <div class="header-img">
                 <div class="bg" v-bind:style="{backgroundImage: 'url(' + imgsrc + ')' }">
                     <div class="Cover-up">
@@ -29,25 +51,10 @@
             <div class="container-fluid">
             </div>
         </div>
-    </div>
-
-    <script>
+            `
+        })
         new Vue({
-            el: '#app',
-            data: {
-                imgsrc: '',
-                listName: '',
-                updateTime:''
-            },
-            created() {
-                fetch('https://music.niubishanshan.top/api/v2/music/songList/4')
-                    .then(response => response.json())
-                    .then(result => {
-                        this.imgsrc = result.data.topInfo.picAlbum
-                        this.listName = result.data.topInfo.listName
-                        this.updateTime=result.data.updateTime
-                    })
-            },
+            el:'#app'
         })
     </script>
     <script src="//code.jquery.com/jquery.js"></script>

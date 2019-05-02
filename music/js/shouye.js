@@ -57,7 +57,7 @@ Vue.component('music', {
         <li class="col-xs-12 col-sm-6 col-md-6 col-lg-6" v-for="(item,index) in top">
         <h3>{{item.title}}</h3>
             <div class="row">
-            <span :songid="item." v-on:click="clicksongfn" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" v-for="(item,index) in item.songList">{{item.songName}}
+            <span  v-on:click="clicksongfn" class="col-xs-12 col-sm-12 col-md-12 col-lg-12" v-for="(item,index) in item.songList">{{item.songName}}
             <p class="singername">{{item.singerName}}</p>
             </span>
             </div>

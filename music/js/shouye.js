@@ -13,54 +13,31 @@ Vue.component('my', {
 
 //音乐组建
 Vue.component('music', {
-    data: function () {
-<<<<<<< HEAD
-
-=======
-        return {
-            slider: null
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> parent of 400a7ca... 更新排行榜
-=======
->>>>>>> parent of 400a7ca... 更新排行榜
-=======
->>>>>>> parent of 400a7ca... 更新排行榜
-        }
-    },
-    created() {
-        fetch('https://music.niubishanshan.top/api/v2/music/recommend')
-            .then(response => response.json())
-            .then(result => {
-                this.slider = result.data.slider
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-                // console.log(this.slider)
-            })
-        fetch('https://music.niubishanshan.top/api/v2/music/toplist')
-            .then(response => response.json())
-            .then(result => {
-                result.data.forEach(element => {
-                    fetch(`https://music.niubishanshan.top/api/v2/music/songList/${element.id}`)
-                    .then(response=>response.json())
-                    .then(result=>{
-                     this.top.push(result.data)
+            data: function () {
+                return {
+                    slider: null
+                }
+            },
+            created() {
+                fetch('https://music.niubishanshan.top/api/v2/music/recommend')
+                    .then(response => response.json())
+                    .then(result => {
+                        this.slider = result.data.slider
+                        // console.log(this.slider)
                     })
-                  
-                })
+                fetch('https://music.niubishanshan.top/api/v2/music/toplist')
+                    .then(response => response.json())
+                    .then(result => {
+                            result.data.forEach(element => {
+                                fetch(`https://music.niubishanshan.top/api/v2/music/songList/${element.id}`)
+                                    .then(response => response.json())
+                                    .then(result => {
+                                        this.top.push(result.data)
+                                    })
 
-=======
-=======
->>>>>>> parent of 400a7ca... 更新排行榜
-=======
->>>>>>> parent of 400a7ca... 更新排行榜
-                console.log(this.slider)
-            })
->>>>>>> parent of 400a7ca... 更新排行榜
-    },
-    template: `<div id="carousel-id" class="carousel slide" data-ride="carousel">
+                            })
+                        },
+                        template: `<div id="carousel-id" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
         <li :class="[index===0?'active':'']" data-target="#carousel-id" :data-slide-to="index" v-for="(item,index) in slider"></li>    
     </ol>
@@ -75,11 +52,6 @@ Vue.component('music', {
     </div>
     <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
     <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 </div>
     <div class="content">
     <div class="container-fluid">
@@ -98,50 +70,41 @@ Vue.component('music', {
 </div>
 `,
 
- 
-    methods: {
-        clicksongfn: function () {
-            alert('xxx')
-        }
-    },
-
-=======
-=======
->>>>>>> parent of 400a7ca... 更新排行榜
-=======
->>>>>>> parent of 400a7ca... 更新排行榜
-</div>`
-})
->>>>>>> parent of 400a7ca... 更新排行榜
-Vue.component('find', {
-    template: '<li>find</li>'
-})
-var app = new Vue({
-    el: '#app',
-    data: {
-        headerlist: [{
-            text: '我的'
-        }, {
-            text: '音乐馆'
-        }, {
-            text: '发现'
-        }],
-        activeheaderlist: 'music'
-    },
-    methods: {
-        //activeheaderlist选择
-        chosefn: function (index) {
-            switch (index) {
-                case 0:
-                    this.activeheaderlist = "my"
-                    break;
-                case 1:
-                    this.activeheaderlist = "music"
-                    break;
-                case 2:
-                    this.activeheaderlist = "find"
-                    break;
-            }
-        }
-    },
-})
+                        methods: {
+                            clicksongfn: function () {
+                                alert('xxx')
+                            }
+                        },
+                    })
+            Vue.component('find', {
+                template: '<li>find</li>'
+            })
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    headerlist: [{
+                        text: '我的'
+                    }, {
+                        text: '音乐馆'
+                    }, {
+                        text: '发现'
+                    }],
+                    activeheaderlist: 'music'
+                },
+                methods: {
+                    //activeheaderlist选择
+                    chosefn: function (index) {
+                        switch (index) {
+                            case 0:
+                                this.activeheaderlist = "my"
+                                break;
+                            case 1:
+                                this.activeheaderlist = "music"
+                                break;
+                            case 2:
+                                this.activeheaderlist = "find"
+                                break;
+                        }
+                    }
+                },
+            })

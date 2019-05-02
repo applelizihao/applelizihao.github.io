@@ -14,7 +14,12 @@ Vue.component('my', {
 //音乐组建
 Vue.component('music', {
     data: function () {
+<<<<<<< HEAD
 
+=======
+        return {
+            slider: null
+>>>>>>> parent of 400a7ca... 更新排行榜
         }
     },
     created() {
@@ -22,6 +27,7 @@ Vue.component('music', {
             .then(response => response.json())
             .then(result => {
                 this.slider = result.data.slider
+<<<<<<< HEAD
 
                 // console.log(this.slider)
             })
@@ -37,6 +43,10 @@ Vue.component('music', {
                   
                 })
 
+=======
+                console.log(this.slider)
+            })
+>>>>>>> parent of 400a7ca... 更新排行榜
     },
     template: `<div id="carousel-id" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -53,6 +63,7 @@ Vue.component('music', {
     </div>
     <a class="left carousel-control" href="#carousel-id" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
     <a class="right carousel-control" href="#carousel-id" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 </div>
@@ -80,6 +91,10 @@ Vue.component('music', {
         }
     },
 
+=======
+</div>`
+})
+>>>>>>> parent of 400a7ca... 更新排行榜
 Vue.component('find', {
     template: '<li>find</li>'
 })

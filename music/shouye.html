@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="zh">
 
 <head>
     <meta charset="utf-8">
@@ -12,12 +12,24 @@
 </head>
 
 <body>
+    
+  
+    
     <div id="app">
         <header-groups v-on:toggle="togglesearch"  :tabconsole="tabconsole.header">
             <header-list v-on:getfn="chosefn(index)" :item="item.text" :index="index"
                 v-for="(item, index) in headerlist">
             </header-list>
         </header-groups>
+
+        <song-info ref="song2" :singeravatarurl="playsong.singeravatarurl" :albumImgUrl="playsong.albumImgUrl" :nowplayername="playsong.nowplayername"   
+        :nowplayersongname="playsong.nowplayersongname" :playeractive="playsong.playeractive"
+        :singeravatarurl="playsong.singeravatarurl"
+        :playsong="playsong.src"
+        
+        v-on:toggleshouye="toggleshouyefn" v-show="songinfo.toggle"></song-info>
+
+
         <component v-on:getfn="clicksongfn" v-show="tabconsole.component" :is="activeheaderlist"></component>
         <header-song v-on:getback="goback" v-on:get="clickchosesongli" v-bind:id="songtop.id"
          v-if="tabconsole.headersong"></header-song>
@@ -27,10 +39,9 @@
          v-on:chosesong="clickchosesongli"
           v-show="tabconsole.search"></search-group>
 
-        <player-song :singeravatarurl="playsong.singeravatarurl" v-on:togglefn="toggleactive" :playeractive="playsong.playeractive" ref="shit"
+        <player-song v-show="playsong.playersongtoggle" v-on:getinfo="showinfofn" :singeravatarurl="playsong.singeravatarurl" v-on:togglefn="toggleactive" :playeractive="playsong.playeractive" ref="shit"
             :nowplayername="playsong.nowplayername" :nowplayersongname="playsong.nowplayersongname"
         :playsong="playsong.src"></player-song>
-    
     </div>
     <script src="js/shouye.js"></script>
     <script src="//code.jquery.com/jquery.js"></script>

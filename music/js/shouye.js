@@ -1,9 +1,52 @@
+
+Vue.component('song-info', {
+    props:['albumImgUrl','singeravatarurl','nowplayername','nowplayersongname','playeractive','singeravatarurl','playsong'],
+
+
+    template: `
+    <div class="song">
+    <div class="song-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <i v-on:click="$emit('toggleshouye')" class="glyphicon glyphicon-chevron-down"></i>
+                </div>
+                <div class="song-header-center col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                   <p class="songname">{{nowplayersongname}}</p> 
+                   <p class="songauthor">—— {{nowplayername}} ——</p>
+                </div>
+                <div class="song-header-right col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                   <i class="glyphicon glyphicon-option-vertical"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="song-content">
+        <div class="container">
+       <img :src="singeravatarurl">
+        </div>
+    </div>
+    <div class="song-footer">
+        <div class="container">
+            <div class="row">
+                <div class="console col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <audio autoplay   controls></audio>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    `
+})
+
+
 Vue.component('search-group', {
     data: function () {
         return {
             searchmessage: '',
             st1: '',
             songList: '',
+            errorsearch: false //显示查询不到信息
         }
     },
     template: `
@@ -34,6 +77,16 @@ Vue.component('search-group', {
                     </div>
                 </div>
             </li>
+            <li>
+        <div v-if="errorsearch" class="row">
+            <div class="search col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <strong>提示:</strong> 搜寻不到此歌曲
+             </div>
+            </div>
+        </div>
+            </li>
         </ul>
     </div></div>
     `,
@@ -47,6 +100,13 @@ Vue.component('search-group', {
                 fetch(`https://music.niubishanshan.top/api/v2/music/search/${this.searchmessage}/1/10`)
                     .then(response => response.json())
                     .then(result => {
+                        if (result.data.songList.length === 0) {
+                         
+                        this.errorsearch=true 
+                        }
+                        else{
+                            this.errorsearch=false
+                        }
                         this.songList = result.data.songList
                     })
             }, 500);
@@ -87,7 +147,7 @@ Vue.component('player-song', {
     template: `
     <div>
     <div class="marginplayer"></div>
-    <div class="player">
+    <div class="player" v-on:click="$emit('getinfo')">
         <div class="container-fluid">
             <div class="row">
                 <div class="song-img col-xs-2 col-sm-1 col-md-1 col-lg-1">
@@ -246,7 +306,11 @@ Vue.component('find', {
 var app = new Vue({
     el: '#app',
     data: {
+        songinfo:{
+            toggle:false
+        },
         playsong: {
+            playersongtoggle:true,
             src: null,
             nowplayername: '',
             nowplayersongname: '',
@@ -276,9 +340,26 @@ var app = new Vue({
         'playsong.playeractive': function () {
             this.playsong.playeractive ? this.$refs.shit.$refs.adi.pause() : this.$refs.shit.$refs.adi.play()
         }
+        
     },
     methods: {
-
+        toggleshouyefn:function () { 
+            this.tabconsole.component = true
+            this.tabconsole.header = true
+            this.tabconsole.headersong = false
+            this.tabconsole.search = false
+            this.songinfo.toggle=false
+            this.playsong.playersongtoggle=true
+         },
+        showinfofn:function () {
+            this.tabconsole.component = false
+            this.tabconsole.header = false
+            this.tabconsole.headersong = false
+            this.tabconsole.search = false
+            this.songinfo.toggle=true
+            this.playsong.playersongtoggle=false
+                
+          },
         //进入搜索页面
         togglesearch: function () {
             this.tabconsole.component = false

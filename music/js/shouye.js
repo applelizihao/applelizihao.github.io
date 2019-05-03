@@ -1,5 +1,30 @@
+Vue.component('header-groups', {
+    props:['tabconsole'],
+    template:`
+    <div v-if="tabconsole" class="header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="left col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <i class="glyphicon glyphicon-th-list"></i>
+            </div>
+            <div class="center col-xs-8 col-sm-8 col-md-8 col-lg-8">
+           <slot></slot>
+            </div>
+            <div class="right col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <i class="glyphicon glyphicon-plus-sign"></i>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <input id="search-input" type="search" class="form-control" placeholder="搜索">
+            </div>
+        </div>
+    </div>
+</div>
+    `
+})
+
+
 Vue.component('player-song', {
-    props: ['playsong', 'nowplayername', 'nowplayersongname', 'playeractive'],
+    props: ['playsong', 'nowplayername', 'nowplayersongname', 'playeractive','singeravatarurl'],
     template: `
     <div>
     <div class="marginplayer"></div>
@@ -7,8 +32,7 @@ Vue.component('player-song', {
         <div class="container-fluid">
             <div class="row">
                 <div class="song-img col-xs-2 col-sm-1 col-md-1 col-lg-1">
-                    <img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=2034093601,2591364475&fm=58&bpow=400&bpoh=583"
-                        alt="">
+                    <img :src="singeravatarurl">
                 </div>
                 <div class="song-info col-xs-5 col-sm-9 col-md-9 col-lg-9">
                     <p class="song-name">{{nowplayersongname}}</p>
@@ -167,7 +191,9 @@ var app = new Vue({
             src: null,
             nowplayername: '',
             nowplayersongname: '',
-            playeractive: true
+            playeractive: true,
+            albumimgUrl:'',
+            singeravatarurl:''
         },
         songtop: {
             id: '' //默认值空
@@ -210,6 +236,14 @@ var app = new Vue({
             fetch(`https://music.niubishanshan.top/api/v2/music/songUrllist/${index}`)
                 .then(response => response.json())
                 .then(result => {
+                    fetch(`https://music.niubishanshan.top/api/v2/music/albumImg/${item.albumMid}/${item.singer[0].singerMid}`)
+                    .then(response=>response.json())
+                    .then(result=>{
+                      
+                        this.playsong.albumImgUrl=result.data.albumImgUrl
+                        this.playsong.singeravatarurl=result.data.singerAvatarUrl
+                        console.log(result.data.singerAvatarUrl)
+                    })
                     this.playsong.src = result.data[0];
                 })
                 .then(() => {

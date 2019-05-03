@@ -40,7 +40,14 @@ let yuangong;
     })
 
  
-    
+    $.ajax({
+        type: "get",
+        url: "http://airide.xin/deERP/public/staff/stafflms",
+        dataType: "json",
+        success: function (response) {
+            console.log(response)
+        }
+    });
 
 
     // 封装ajax

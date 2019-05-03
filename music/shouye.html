@@ -19,7 +19,7 @@
                 v-for="(item, index) in headerlist">
             </header-list>
         </header-groups>
-        <component v-on:getfn="clicksongfn" v-if="tabconsole.component" :is="activeheaderlist"></component>
+        <component v-on:getfn="clicksongfn" v-show="tabconsole.component" :is="activeheaderlist"></component>
         <header-song v-on:getback="goback" v-on:get="clickchosesongli" v-bind:id="songtop.id"
             v-if="tabconsole.headersong"></header-song>
 

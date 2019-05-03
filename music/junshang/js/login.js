@@ -29,7 +29,7 @@ $('#submitBtn').click(function () {
                 window.localStorage.username=username;
                 window.localStorage.company=name
                 alert('登陆成功')
-                // window.location.href="index.html"
+                window.location.href="index.html"
             } else {
                 alert('登陆失败')
             }

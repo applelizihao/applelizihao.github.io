@@ -193,7 +193,7 @@ var app = new Vue({
             nowplayersongname: '',
             playeractive: true,
             albumimgUrl:'',
-            singeravatarurl:''
+            singeravatarurl:'../music/img/music.jpg'
         },
         songtop: {
             id: '' //默认值空

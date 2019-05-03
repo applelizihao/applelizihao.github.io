@@ -1,0 +1,81 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1rem;
+    color: black;
+}
+
+//头部
+.header {
+    background: black;
+    padding: 1rem;
+
+    .container-fluid {
+
+        .row {
+            .header-left {
+                h1 {
+                    color: white;
+                }
+
+                height: 5rem;
+                font-size: 3rem;
+            }
+
+            .header-right {
+
+                height: 100%;
+
+                ul {
+                    box-sizing: border-box;
+                    overflow: hidden;
+                    float: right;
+
+                    li {
+                        float: left;
+
+                        a {
+                            padding: 1rem;
+                            font-size: 1.5rem;
+                            display: block;
+                            color: white;
+                            line-height: 3rem;
+
+                            &:hover {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .header-btn {
+                height: 5rem;
+                padding-top: 0.8rem;
+
+                button {
+                    float: right;
+                }
+            }
+        }
+    }
+}

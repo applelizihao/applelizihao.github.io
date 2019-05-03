@@ -1,0 +1,280 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1rem;
+    color: black;
+}
+
+//头部
+.header {
+    background: black;
+    padding: 1rem;
+
+    .container-fluid {
+
+        .row {
+            .header-left {
+                h1 {
+                    color: white;
+                }
+
+                height: 5rem;
+                font-size: 3rem;
+            }
+
+            .header-right {
+
+                height: 100%;
+
+                ul {
+                    box-sizing: border-box;
+                    overflow: hidden;
+                    float: right;
+
+                    li {
+                        float: left;
+
+                        a {
+                            padding: 1rem;
+                            font-size: 1.5rem;
+                            display: block;
+                            color: white;
+                            line-height: 3rem;
+
+                            &:hover {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .header-btn {
+                height: 5rem;
+                padding-top: 0.8rem;
+
+                button {
+                    float: right;
+                }
+            }
+        }
+    }
+}
+
+//内容区域
+.contentBox {
+    margin-top: 3rem;
+
+    //左侧内容区域
+    .container-fluid {
+        .row {
+            .contentBox-Left {
+                .contentBox-Date {
+                    * {
+                        margin: 0;
+                        padding: 0;
+                    }
+
+                    ul {
+                        list-style: none;
+                    }
+
+                    #schedule-box {
+                        width: 320px;
+                        margin: 0 auto;
+                        padding: 35px 20px;
+                        font-size: 13px;
+                    }
+
+                    .schedule-hd {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 0 15px;
+                    }
+
+                    .today {
+                        flex: 1;
+                        text-align: center;
+                    }
+
+                    .ul-box {
+                        overflow: hidden;
+                    }
+
+                    .ul-box>li {
+                        float: left;
+                        width: 14.28%;
+                        text-align: center;
+                        padding: 5px 0;
+                    }
+
+                    .other-month {
+                        color: #999999;
+                    }
+
+                    .current-month {
+                        color: #333333;
+                    }
+
+                    .today-style {
+                        border-radius: 50%;
+                        background: #58d321;
+                    }
+
+                    .arrow {
+                        cursor: pointer;
+                    }
+
+                    .dayStyle {
+                        display: inline-block;
+                        width: 35px;
+                        height: 35px;
+                        border-radius: 50%;
+                        text-align: center;
+                        line-height: 35px;
+                        cursor: pointer;
+                    }
+
+                    .current-month>.dayStyle:hover {
+                        background: #00BDFF;
+                        color: #ffffff;
+                    }
+
+                    .today-flag {
+                        background: #00C2B1;
+                        color: #fff;
+                    }
+
+                    .boxshaw {
+                        box-shadow: 2px 2px 15px 2px #e3e3e3;
+                    }
+
+                    .selected-style {
+                        background: #00BDFF;
+                        color: #ffffff;
+                    }
+
+                    #h3Ele {
+                        text-align: center;
+                        padding: 10px;
+                    }
+                }
+
+                .contentBox-E-mail {
+                    padding: 1rem;
+                    text-align: center;
+                    border-radius: 0.5rem;
+                    ;
+                    border: 1px solid lightblue;
+                    background: lightblue;
+
+                    h1 {
+                        font-size: 2rem;
+                        cursor: pointer;
+                    }
+
+                    .contentBox-E-mail-content {
+                        margin-top: 1rem;
+                        box-sizing: border-box;
+
+                        .box-content {
+                            background: white;
+                            height: 30rem;
+
+                            p {
+                                font-size: 2rem;
+                            }
+                        }
+                    }
+                }
+                .content-Gov{
+                    margin-top: 2rem;
+                    padding: 2rem;
+                    border:1rem solid lightblue;
+                    border-radius: 1rem;
+                    h4{
+                        text-align: center;
+                    }
+                    .GovGroups{
+                        height: 30rem;
+                    }
+                }
+            }
+
+            .contentBox-Right {
+                padding: 0rem 3rem;
+
+                .container-fluid {
+                    .row {
+                        .userInfo {
+                            border: 1px solid lightblue;
+                            padding: 2rem 1rem;
+
+                            img {
+                                margin: 0 auto;
+                                width: 20rem;
+                                height: 20rem;
+
+                                border-radius: 50%;
+                                display: block;
+                            }
+
+                            p {
+                                margin-top: 1rem;
+                                margin-left: 10rem;
+                                font-weight: bold;
+                                font-size: 1.8rem;
+                            }
+                        }
+
+                        .signIn {
+                            margin-top: 3rem;
+
+                            button {
+                                width: 100%;
+                                font-weight: bold;
+                                font-size: 2rem;
+                            }
+                        }
+
+                        .fill {
+                            margin-top: 3rem;
+                            border: 1px solid lightblue;
+                            padding: 2rem 1rem;
+
+                            h4 {
+                                font-weight: bold;
+                                text-align: center;
+                                height: 40rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.footer{
+    margin-top:2rem;
+    padding: 2rem 0;
+    text-align: center;
+}

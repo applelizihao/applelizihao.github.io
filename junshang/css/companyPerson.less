@@ -1,0 +1,191 @@
+@media screen and(max-width:1160px) {
+    .header {
+        width: 1160px;
+    }
+}
+
+@color1: lightblue;
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+    margin: 0;
+}
+
+li {
+    list-style: none;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1rem;
+    color: black;
+}
+
+//头部
+.header {
+    background: black;
+    padding: 1rem;
+
+    .container-fluid {
+
+        .row {
+            .header-left {
+                h1 {
+                    color: white;
+                }
+
+                height: 5rem;
+                font-size: 3rem;
+            }
+
+            .header-right {
+
+                height: 100%;
+
+                ul {
+                    box-sizing: border-box;
+                    overflow: hidden;
+                    float: right;
+
+                    li {
+                        float: left;
+
+                        a {
+                            padding: 1rem;
+                            font-size: 1.5rem;
+                            display: block;
+                            color: white;
+                            line-height: 3rem;
+
+                            &:hover {
+                                text-decoration: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .header-btn {
+                height: 5rem;
+                padding-top: 0.8rem;
+
+                button {
+                    float: right;
+                }
+            }
+        }
+    }
+}
+
+.content-Person {
+    width: 1160px;
+    margin: 2rem auto;
+
+    .container-fluid {
+        .table-left {
+            .table-branch {
+                // padding: 1rem;
+                border: 0.5rem solid @color1;
+                border-radius: 0.6rem;
+
+                button {
+                    width: 100%;
+                    border-radius: 0;
+                }
+            }
+        }
+
+        .table-right {
+            .table-info {
+                padding: 1rem;
+                border: 0.5rem solid @color1;
+                border-radius: 0.6rem;
+
+                .container-fluid {
+                    .row {
+                        .table-info-left {
+                            .table-branch-info {
+                                margin: 0 auto;
+                                width: 20rem;
+                                height: 20rem;
+                                background: greenyellow;
+                                padding: 2rem;
+                                margin-top: 3rem;
+                                h4 {
+                                    width: 4rem;
+                                    font-size: 4rem;
+                                    margin: 1rem auto
+
+                                }
+                            }
+
+                            .table-username-info {
+                                width: 15rem;
+                                margin: 0 auto;
+                                margin-top: 3rem;
+                                margin-bottom: 2rem;
+
+                                #username-info {
+                                    width: 100%;
+                                    display: block;
+                                    padding: 1rem;
+                                    font-size: 1.5rem;
+                                    font-weight: bold;
+                                    cursor: pointer;
+                                }
+                            }
+                        }
+
+                        .table-info-right {
+                            .table-info-right-header {
+                                margin-top: 3rem;
+
+                                button {
+                                    margin: 0 1rem;
+                                    padding: 1rem 2rem;
+
+                                }
+
+                                a {
+                                    display: block;
+                                    float: right;
+                                    margin-top:1.5rem;
+                                    margin-right: 6rem;
+                                    font-size: 2rem;
+                                    text-decoration: underline;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .biaodan{
+                border: 0.5rem solid lightblue;
+                border-radius: 0.5rem;
+                padding: 4rem;
+                margin-top: 2rem;
+                display: none;
+                p{
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                }
+                input{
+                    padding: 1rem;
+                    margin:1rem 0rem;
+                    width: 90%;
+                }
+            }
+        }
+    }
+}

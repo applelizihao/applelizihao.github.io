@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/companyPerson.css">
+</head>
+
+<body>
+    <div class="header">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="header-left col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <h1>Logo</h1>
+                </div>
+                <div class="header-right col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                    <ul>
+                        <li><a href="">订单管理</a></li>
+                        <li><a href="">商品库存</a></li>
+                        <li><a href="">消息管理</a></li>
+                        <li><a href="">采购调拨</a></li>
+                        <li><a href="">销售管理</a></li>
+                        <li><a href="">企业内部管理</a></li>
+                        <li><a href="">系统管理</a></li>
+                    </ul>
+                </div>
+                <div class="header-btn col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                    <button type="button" class="btn btn-danger">退出</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-Person">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="table-left col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <div class="table-branch">
+
+                        <button type="button" class="btn btn-danger">公司</button>
+
+                    </div>
+                </div>
+
+                <div class="table-right col-xs-9 col-sm-9 col-md-9 col-lg-9">
+                    <div class="table-info">
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                <div class="table-info-left col-xs-4 col-sm-4 col-md-4 col-lg-4">
+
+                                    <div class="table-branch-info">
+                                        <h4>库管部</h4>
+                                    </div>
+                                    <div class="table-username-info">
+                                        <span id="username-info" class="label label-info">张三</span>
+                                    </div>
+                                </div>
+
+                                <div class="table-info-right col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                                    <div class="table-info-right-header">
+                                        <button id="addPerson" type="button" class="btn btn-info">新增员工</button>
+                                        <button type="button" class="btn btn-info">导入数据</button>
+                                        <a href="http://airide.xin/deerp/resource/public/%E5%91%98%E5%B7%A5%E4%BF%A1%E6%81%AF%E6%A8%A1%E6%9D%BF%E8%A1%A8.xls" title="文件不能超过10M，格式必须为xls、xlsx">下载样板</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="biaodan">
+                        <form id="f1">
+                            <div class="row">
+                                <div class="biaodan-left col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <p>姓名</p>
+                                    <input type="text" name="name" id="name" class="form-control" value=""
+                                        required="required" pattern="" title="">
+                                    <p>年龄</p>
+                                    <input type="text" name="age" id="age" class="form-control" value=""
+                                        required="required" pattern="" title="">
+                                    <p>电话</p>
+                                    <input type="text" name="telephone" id="telephone" class="form-control" value=""
+                                        required="required" pattern="" title="">
+                                    <p>身份证</p>
+                                    <input type="text" name="identity_card" id="identity_card" class="form-control"
+                                        value="" required="required" pattern="" title="">
+                                </div>
+
+                                <div class="biaodan-right col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                    <p>电子邮箱</p>
+                                    <input type="text" name="mail" id="mail" class="form-control" value=""
+                                        required="required" pattern="" title="">
+                                    <p>家庭住址</p>
+                                    <input type="text" name="location" id="location" class="form-control" value=""
+                                        required="required" pattern="" title="">
+                                    <p>紧急联系人</p>
+                                    <input type="text" name="h_name" id="h_name" class="form-control" value=""
+                                        required="required" pattern="" title="">
+                                    <p>紧急联系人电话</p>
+                                    <input type="text" name="h_telephone" id="h_telephone" class="form-control" value=""
+                                        required="required" pattern="" title="">
+                                </div>
+                                <div class="btn">
+                                    <button  data-toggle="modal" href='#modal-id' id="tijiao" type="button" class="btn btn-success">提交</button>
+                                
+                                <button id="xiugai" type="button" class="btn btn-success">修改</button>
+                                    <button type="reset" class="btn btn-danger">重置</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="tc">
+        <!-- <a class="btn btn-primary">Trigger modal</a> -->
+        <div style="top:35%;" class="modal fade" id="modal-id">
+            <div style="width:300px" class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">提示警告</h4>
+                    </div>
+                    <div class="modal-body" style="display:flex;justify-content: center;">
+                        <img src="https://ss0.baidu.com/73F1bjeh1BF3odCf/it/u=3743706786,3491155550&fm=85&s=33B2CC6E267D7636022D166E0300D074" alt="">
+                        <span id="message" style="font-size: 2rem">创建失败</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="js/companyPerson.js"></script>
+</body>
+
+</html>

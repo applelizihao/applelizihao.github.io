@@ -1,6 +1,65 @@
+Vue.component('search-group', {
+    data: function () {
+        return {
+            searchmessage: '',
+            st1: '',
+            songList: '',
+        }
+    },
+    template: `
+    <div>
+    <div class="header-search">
+        <div class="content">
+            <div>
+                <i v-on:click="$emit('toggleback')" class="glyphicon glyphicon-menu-left"></i>
+            </div>
+            <div>
+                <input v-model.trim="searchmessage" v-on:input="searchfn" placeholder="搜索音乐、视频、歌单、歌手、用户"
+                type="search" class="form-control">
+            </div>
+            <div>搜索</div>
+        </div>
+    </div>
+    <div v-show="searchmessage!=''" class="search-content">
+        <ul class="list-group">
+            <li 
+            v-on:click="$emit('chosesong',item.songMid,item)"
+            class="list-group-item" v-for="(item, index) in songList" 
+            v-if="item.songName.indexOf('&')===-1 && item.singer[0].singerName.indexOf('&')===-1"
+                :key="index">
+                <div class="row">
+                    <div class="search col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <span>{{item.songName}}</span>
+                        <span>{{item.singer[0].singerName}}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div></div>
+    `,
+    methods: {
+        searchfn: function () {
+            clearTimeout(this.st1)
+            if (this.searchmessage === '') {
+                return
+            }
+            this.st1 = setTimeout(() => {
+                fetch(`https://music.niubishanshan.top/api/v2/music/search/${this.searchmessage}/1/10`)
+                    .then(response => response.json())
+                    .then(result => {
+                        this.songList = result.data.songList
+                    })
+            }, 500);
+        }
+    },
+})
+
+
+
+
 Vue.component('header-groups', {
-    props:['tabconsole'],
-    template:`
+    props: ['tabconsole'],
+    template: `
     <div v-if="tabconsole" class="header">
     <div class="container-fluid">
         <div class="row">
@@ -14,7 +73,7 @@ Vue.component('header-groups', {
                 <i class="glyphicon glyphicon-plus-sign"></i>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <input id="search-input" type="search" class="form-control" placeholder="搜索">
+                <input v-on:click="$emit('toggle')" id="search-input" type="search" class="form-control" placeholder="搜索">
             </div>
         </div>
     </div>
@@ -24,7 +83,7 @@ Vue.component('header-groups', {
 
 
 Vue.component('player-song', {
-    props: ['playsong', 'nowplayername', 'nowplayersongname', 'playeractive','singeravatarurl'],
+    props: ['playsong', 'nowplayername', 'nowplayersongname', 'playeractive', 'singeravatarurl'],
     template: `
     <div>
     <div class="marginplayer"></div>
@@ -44,7 +103,7 @@ Vue.component('player-song', {
                 </div>
             </div>
         </div>
-        <audio ref="adi" autoplay v-on:error="errorplay" :src="playsong"></audio>
+        <audio ref="adi" v-on:error="errorplay" :src="playsong"></audio>
     </div>
     </div>
     `,
@@ -192,8 +251,8 @@ var app = new Vue({
             nowplayername: '',
             nowplayersongname: '',
             playeractive: true,
-            albumimgUrl:'',
-            singeravatarurl:'../music/img/music.jpg'
+            albumimgUrl: '',
+            singeravatarurl: '../music/img/music.jpg'
         },
         songtop: {
             id: '' //默认值空
@@ -209,41 +268,51 @@ var app = new Vue({
         tabconsole: {
             component: true, //默认值true
             header: true, //默认值true
-            headersong: false //默认值false
+            headersong: false, //默认值false
+            search: false
         }
     },
     watch: {
-        'playsong.playeractive':function () { 
-          this.playsong.playeractive?this.$refs.shit.$refs.adi.pause():this.$refs.shit.$refs.adi.play()
+        'playsong.playeractive': function () {
+            this.playsong.playeractive ? this.$refs.shit.$refs.adi.pause() : this.$refs.shit.$refs.adi.play()
         }
     },
     methods: {
-        toggleactive:function () { 
-            this.playsong.playeractive=!this.playsong.playeractive
+
+        //进入搜索页面
+        togglesearch: function () {
+            this.tabconsole.component = false
+            this.tabconsole.header = false
+            this.tabconsole.headersong = false
+            this.tabconsole.search = true
+        },
+
+        toggleactive: function () {
+            this.playsong.playeractive = !this.playsong.playeractive
         },
         goback: function () {
             this.tabconsole.component = true
             this.tabconsole.header = true
             this.tabconsole.headersong = false
+            this.tabconsole.search = false
         },
         //排行榜点击歌曲播放
         clickchosesongli: function (index, item) {
             //赋值传过来的index
-            // console.log(index)
-            // console.log(item)
+            console.log(index)
+            console.log(item)
             this.playsong.nowplayersongname = item.songName
             this.playsong.nowplayername = item.singer[0].singerName
             fetch(`https://music.niubishanshan.top/api/v2/music/songUrllist/${index}`)
                 .then(response => response.json())
                 .then(result => {
                     fetch(`https://music.niubishanshan.top/api/v2/music/albumImg/${item.albumMid}/${item.singer[0].singerMid}`)
-                    .then(response=>response.json())
-                    .then(result=>{
-                      
-                        this.playsong.albumImgUrl=result.data.albumImgUrl
-                        this.playsong.singeravatarurl=result.data.singerAvatarUrl
-                        console.log(result.data.singerAvatarUrl)
-                    })
+                        .then(response => response.json())
+                        .then(result => {
+                            this.playsong.albumImgUrl = result.data.albumImgUrl
+                            this.playsong.singeravatarurl = result.data.singerAvatarUrl
+                            console.log(result.data.singerAvatarUrl)
+                        })
                     this.playsong.src = result.data[0];
                 })
                 .then(() => {
@@ -262,7 +331,7 @@ var app = new Vue({
             this.tabconsole.header = false
             this.tabconsole.headersong = true
         },
-        
+
         //activeheaderlist选择
         chosefn: function (index) {
             switch (index) {

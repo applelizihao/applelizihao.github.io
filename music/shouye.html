@@ -13,19 +13,24 @@
 
 <body>
     <div id="app">
-
-        <header-groups :tabconsole="tabconsole.header">
+        <header-groups v-on:toggle="togglesearch"  :tabconsole="tabconsole.header">
             <header-list v-on:getfn="chosefn(index)" :item="item.text" :index="index"
                 v-for="(item, index) in headerlist">
             </header-list>
         </header-groups>
         <component v-on:getfn="clicksongfn" v-show="tabconsole.component" :is="activeheaderlist"></component>
         <header-song v-on:getback="goback" v-on:get="clickchosesongli" v-bind:id="songtop.id"
-            v-if="tabconsole.headersong"></header-song>
+         v-if="tabconsole.headersong"></header-song>
+
+         <search-group
+         v-on:toggleback="goback"
+         v-on:chosesong="clickchosesongli"
+          v-show="tabconsole.search"></search-group>
 
         <player-song :singeravatarurl="playsong.singeravatarurl" v-on:togglefn="toggleactive" :playeractive="playsong.playeractive" ref="shit"
             :nowplayername="playsong.nowplayername" :nowplayersongname="playsong.nowplayersongname"
-            :playsong="playsong.src"></player-song>
+        :playsong="playsong.src"></player-song>
+    
     </div>
     <script src="js/shouye.js"></script>
     <script src="//code.jquery.com/jquery.js"></script>

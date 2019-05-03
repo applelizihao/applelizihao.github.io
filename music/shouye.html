@@ -22,7 +22,7 @@
             </header-list>
         </header-groups>
 
-        <song-info ref="song2" :singeravatarurl="playsong.singeravatarurl" :albumImgUrl="playsong.albumImgUrl" :nowplayername="playsong.nowplayername"   
+        <song-info ref="song" :singeravatarurl="playsong.singeravatarurl" :albumImgUrl="playsong.albumImgUrl" :nowplayername="playsong.nowplayername"   
         :nowplayersongname="playsong.nowplayersongname" :playeractive="playsong.playeractive"
         :singeravatarurl="playsong.singeravatarurl"
         :playsong="playsong.src"
@@ -38,8 +38,8 @@
          v-on:toggleback="goback"
          v-on:chosesong="clickchosesongli"
           v-show="tabconsole.search"></search-group>
-
-        <player-song v-show="playsong.playersongtoggle" v-on:getinfo="showinfofn" :singeravatarurl="playsong.singeravatarurl" v-on:togglefn="toggleactive" :playeractive="playsong.playeractive" ref="shit"
+          <!-- v-on:getinfo="showinfofn" -->
+        <player-song v-show="playsong.playersongtoggle" :singeravatarurl="playsong.singeravatarurl" v-on:togglefn="toggleactive" :playeractive="playsong.playeractive" ref="shit"
             :nowplayername="playsong.nowplayername" :nowplayersongname="playsong.nowplayersongname"
         :playsong="playsong.src"></player-song>
     </div>

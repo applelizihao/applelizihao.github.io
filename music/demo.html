@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="demo.css">
+</head>
+<style>
+</style>
+
+<body>
+    <div id="app">
+        <header-song></header-song>
+    </div>
+
+    <script>
+        Vue.component('header-song', {
+            data: function () {
+                return {
+                    imgsrc: '',
+                    listName: '',
+                    updateTime: ''
+                }
+            },
+            created() {
+                fetch('https://music.niubishanshan.top/api/v2/music/songList/4')
+                    .then(response => response.json())
+                    .then(result => {
+                        this.imgsrc = result.data.topInfo.picAlbum
+                        this.listName = result.data.topInfo.listName
+                        this.updateTime = result.data.updateTime
+                    })
+            },
+            template: `
+            <div class="header-song">
+            <div class="header-img">
+                <div class="bg" v-bind:style="{backgroundImage: 'url(' + imgsrc + ')' }">
+                    <div class="Cover-up">
+                        <h3>{{listName.split('·')[0]}}</h3>
+                        <h1>{{listName.split('·')[1]}}</h1>
+                        <p>{{updateTime}}<span>更新</span><i class="glyphicon glyphicon-info-sign"></i></p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="container-fluid">
+            </div>
+        </div>
+            `
+        })
+        new Vue({
+            el:'#app'
+        })
+    </script>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>

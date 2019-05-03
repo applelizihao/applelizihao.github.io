@@ -13,7 +13,7 @@
 
 <body>
     <div id="app">
-        <div class="header">
+        <div v-if="tabconsole.header" class="header">
             <div class="container-fluid">
                 <div class="row">
                     <div class="left col-xs-2 col-sm-2 col-md-2 col-lg-2">
@@ -27,25 +27,18 @@
                     <div class="right col-xs-2 col-sm-2 col-md-2 col-lg-2">
                         <i class="glyphicon glyphicon-plus-sign"></i>
                     </div>
-                    
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <input id="search-input" type="search" class="form-control" placeholder="搜索">                        
+                        <input id="search-input" type="search" class="form-control" placeholder="搜索">
                     </div>
                 </div>
             </div>
         </div>
-        <component :is="activeheaderlist"></component>
-
-<div class="container">
-    
-</div>
-
-
-
+        <component v-on:getfn="clicksongfn" v-if="tabconsole.component" :is="activeheaderlist"></component>
+        <header-song v-on:getback="goback" v-on:get="clickchosesongli" v-bind:id="songtop.id" v-if="tabconsole.headersong"></header-song>
+        <player-song v-on:togglefn="toggleactive" :playeractive="playsong.playeractive" ref="shit" :nowplayername="playsong.nowplayername" :nowplayersongname="playsong.nowplayersongname" :playsong="playsong.src"></player-song>
     </div>
     <script src="js/shouye.js"></script>
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
-
 </html>

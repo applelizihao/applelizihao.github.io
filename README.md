@@ -1,11 +1,24 @@
-###律师事务所模板
 
-链接:<a href="https://applelizihao.github.io/job/index.html">https://applelizihao.github.io/job/index.html</a>
 
-###贪吃蛇
+# 律师事务所模板
+[预览](https://applelizihao.github.io/job/index.html)
+```
+使用框架:
+Bootstrap
+Jquery
+```
 
-链接:<a href="https://applelizihao.github.io/tcs/index.html">https://applelizihao.github.io/tcs/index.html</a>
+# 贪吃蛇
+[预览](https://applelizihao.github.io/tcs)
+```
+使用框架:
+原生JavaScript，ES6语法
+```
 
-###音乐播放器
+# 音乐播放器
+[预览](https://applelizihao.github.io/music/shouye.html)
 
-链接:<a href="https://applelizihao.github.io/music/shouye.html">https://applelizihao.github.io/music/shouye.html</a>
+```
+使用框架:
+Vue
+```

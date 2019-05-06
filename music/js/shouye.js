@@ -1,6 +1,6 @@
 
 Vue.component('song-info', {
-    props:['albumImgUrl','singeravatarurl','nowplayername','nowplayersongname','playeractive','singeravatarurl','playsong'],
+    props:['albumimgUrl','singeravatarurl','nowplayername','nowplayersongname','playeractive','singeravatarurl','playsong'],
 
 
     template: `
@@ -390,7 +390,7 @@ var app = new Vue({
                     fetch(`https://music.niubishanshan.top/api/v2/music/albumImg/${item.albumMid}/${item.singer[0].singerMid}`)
                         .then(response => response.json())
                         .then(result => {
-                            this.playsong.albumImgUrl = result.data.albumImgUrl
+                            this.playsong.albumimgUrl = result.data.albumimgUrl
                             this.playsong.singeravatarurl = result.data.singerAvatarUrl
                             console.log(result.data.singerAvatarUrl)
                         })

@@ -57,7 +57,7 @@ window.onscroll = function () {
             "color": "white"
         })
     }
-    if (top > $('.about-title')[0].offsetTop - $('.about-title')[0].offsetHeight) {
+    if (top > $('.person')[0].offsetTop - $('.person')[0].offsetHeight-300) {
         $('.about-title').fadeIn(1000)
         $('.imgGroups').css({
             "transform": "translateX(0)",

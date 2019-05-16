@@ -2,6 +2,7 @@
 let canvas = document.querySelector('#canvas');
 let ctx = canvas.getContext('2d');
 let blockSize = 10;
+var T1;
 class Block {
 	constructor(x, y) {
 		this.x = x;
@@ -29,16 +30,16 @@ class Snake {
 	move() {
 		let head = this.corporeity[0];
 		if (this.direction === "right" && direction === "left") {
-			return;
+			direction='right'
 		}
 		if (this.direction === "left" && direction === "right") {
-			return;
+			direction='left'
 		}
 		if (this.direction === "up" && direction === "down") {
-			return;
+			direction='up'
 		}
 		if (this.direction === "down" && direction === "up") {
-			return;
+			direction='down'
 		}
 		this.direction = direction;
 		this.directionFn(this.direction);
@@ -198,7 +199,7 @@ food.draw();
 //初始化
 snake.draw();
 
-var T1 = setInterval(() => {
+T1 = setInterval(() => {
 	ctx.clearRect(0, 0, canvas.width, canvas.height)
 	snake.move();
 	snake.draw();
@@ -237,6 +238,7 @@ let {
 let stop = document.querySelector('.stop');
 
 stop.onclick = (stopFn = () => {
+	
 	var count = 0
 	return function() {
 		count++;

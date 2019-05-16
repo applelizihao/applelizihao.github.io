@@ -1,0 +1,94 @@
+#stage {
+    width: 1000px;
+    height: 500px;
+    margin: 100px auto;
+    position: relative;
+    overflow: hidden;
+
+    #btnG {
+        width: 1000px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 20;
+        top: 45%;
+
+        span {
+            cursor: pointer;
+            transition: all .3s;
+            padding: 10px;
+            &:nth-child(1) {
+                width: 50px;
+                height: 25px;
+                position: relative;
+                left: -58px;
+                background: rgba(111, 111, 111, 0.3);
+                float: left;
+                cursor: pointer;
+            }
+
+            &:nth-child(2) {
+                position: relative;
+                width: 50px;
+                height: 25px;
+                float: right;
+                left: 58px;
+                background: rgba(111, 111, 111, 0.3);
+
+            }
+        }
+
+    }
+
+    #lbt {
+
+
+        width: 6000px;
+        height: 500px;
+        position: relative;
+
+        li {
+            list-style: none;
+            width: 1000px;
+            height: 500px;
+            float: left;
+
+            &:nth-child(1) {
+                background: red;
+            }
+
+            &:nth-child(2) {
+                background: green;
+            }
+
+            &:nth-child(3) {
+                background: orange;
+            }
+
+            &:nth-child(4) {
+                background: blue;
+            }
+
+            &:nth-child(5) {
+                background: red;
+            }
+
+            &:nth-child(6) {
+                background: green;
+            }
+
+        }
+
+
+    }
+
+    &:hover #btnG span{
+        left: 0;
+    }
+}
+
+ul,
+li {
+    margin: 0px;
+    padding: 0px;
+}

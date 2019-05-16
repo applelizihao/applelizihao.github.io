@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图</title>
+    <link rel="stylesheet" href="css/小版本.css">
+</head>
+
+<body>
+    <div class="stage">
+        <div class="box">
+            <div class="show">
+                <img src="img/1.jpg" alt="">
+                <img src="img/2.jpg" alt="">
+                <img src="img/3.jpg" alt="">
+                <img src="img/4.jpg" alt="">
+            </div>
+            <div class="nav">
+                <div class="lr">
+                    <span id="left">Left</span>
+                    <span id="right">Right</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var picsImg = document.querySelectorAll('.pics li img')
+        var showImg = document.querySelectorAll('.show img')
+        var show = document.querySelector('.show');
+        var left = document.querySelector('#left');
+        var right = document.querySelector('#right')
+        var report = true
+        for (i = 0; i < picsImg.length; i++) {
+            picsImg[i].index = i
+            picsImg[i].onclick = function () {
+                if (this.index == 0) {
+                    
+                }
+                if(this.index==2){
+                    showImg[2].style
+                }
+            }
+            if (this.index == 1) {
+
+            }
+            console.log(this.index)
+        }
+
+        right.onclick = function () {
+            var showImg = document.querySelectorAll('.show img')
+            showImg[0].style.marginLeft = '-500px';
+            setTimeout(function () {
+                showImg[0].style.marginLeft = '0';
+                show.append(showImg[0])
+            }, 1000)
+        }
+        left.onclick = function () {
+            if (report == true) {
+                report = false
+                var showImg = document.querySelectorAll('.show img')
+                show.insertBefore(showImg[showImg.length - 1], showImg[0])
+                showImg[showImg.length - 1].style.marginLeft = "-500px"
+                setTimeout(function () {
+                    showImg[showImg.length - 1].style.marginLeft = "0px"
+                }, 10)
+                setTimeout(function () {
+                    report = true
+                }, 1000)
+            }
+        }
+    </script>
+</body>
+
+</html>

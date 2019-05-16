@@ -1,0 +1,71 @@
+body,
+li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.stage {
+    width: 500px;
+    margin: 50px auto;
+
+    .pics {
+        overflow: hidden;
+
+        li {
+            list-style: none;
+            float: left;
+            margin: 10px;
+
+            img {
+                width: 100px;
+                cursor: pointer;
+            }
+        }
+
+
+    }
+
+    .box {
+        overflow: hidden;
+        width: 500px;
+        position: relative;
+
+        .show {
+            width: 2500px;
+            overflow: hidden;
+    
+            img {
+                transition: all 1s;
+                width: 500px;
+                height: 300px;
+                float: left;
+            }
+        }
+
+        .nav {
+            position: absolute;
+            top: 50%;
+            left: 0;
+
+            .lr {
+                width: 500px;
+                height: 50px;
+                position: relative;
+                margin-top: -30px;
+                top: 50%;
+                span{
+                    cursor: pointer;
+                    padding: 10px;
+                    background: rgba(111, 111, 111, 0.7);
+                    &:nth-child(1){
+                        float: left
+                    }
+                    &:nth-child(2){
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
+}

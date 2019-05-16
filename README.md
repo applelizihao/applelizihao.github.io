@@ -24,8 +24,21 @@ Jquery
 
 # 音乐播放器
 [预览](https://applelizihao.github.io/music/shouye.html)
-
 ```
 使用工具:
 Vue
+```
+
+# 美颜色图片
+[预览](https://applelizihao.github.io/meiyan/index.html)
+```
+使用工具:
+JavaScript HTML CSS
+```
+
+# 无缝轮播图
+[预览](https://applelizihao.github.io/lbt/index.html)
+```
+使用工具:
+JavaScript HTML CSS
 ```

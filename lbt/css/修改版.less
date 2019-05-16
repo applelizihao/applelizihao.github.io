@@ -1,0 +1,79 @@
+ul,
+li,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.stage {
+    width: 1000px;
+    height: 500px;
+    border: 1px solid;
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+    .btn {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 10;
+        width: 1000px;
+        top: 45%;
+        span {
+            cursor: pointer;
+            display: inline-block;
+            width: 80px;
+            line-height: 40px;
+            padding: 10px;
+            background: rgba(111, 111, 111, 0.3);
+            position: relative;
+            text-align: center;
+            transition: all .3s;
+            &:nth-child(1) {
+                
+                float: left;
+                left: -80px
+            }
+
+            &:nth-child(2) {
+                float: right;
+                left: 80px;
+            }
+        }
+    }
+
+    .box {
+        width: 4000px;
+        height: 500px;
+        position: relative;
+
+        li {
+            transition: all 1s;
+            width: 1000px;
+            line-height: 500px;
+            text-align: center;
+            font-size: 10rem;
+            float: left;
+            list-style: none;
+        }
+
+        .item1 {
+            background: red;
+        }
+
+        .item2 {
+            background: blue;
+        }
+
+        .item3 {
+            background: green;
+        }
+
+        .item4 {
+            background: orange;
+        }
+    }
+    &:hover .btn span{
+        left: 0;
+    }
+}

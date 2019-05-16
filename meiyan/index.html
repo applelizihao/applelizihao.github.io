@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>美颜图片</title>
+</head>
+
+<body>
+    <div class="stage">
+        <div class="blue"></div>
+        <div class="green">
+            <span></span>
+        </div>
+        <input id="ran" type="range">
+    </div>
+    <style>
+        .stage {
+            width: 500px;
+            height: 500px;
+            position: relative;
+        }
+
+        .stage input[type=range] {
+            height: 100%;
+            width: 100%;
+            top: 0;
+            position: absolute;
+            opacity: 0;
+        }
+
+        .stage .blue {
+            width: 100%;
+            height: 100%;
+            background-image: url('x.jpg');
+            background-repeat: no-repeat;
+            background-size:cover;
+            background-position: center;
+        }
+
+        .stage .green {
+            position: absolute;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.082);
+        }
+        .stage .green span{
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            background: rgba(208, 237, 247, 0.514);
+            border-radius: 50%;
+            float:right;
+            position: relative;
+            top: 50%;
+            margin-top: -30px;
+            left: 15px;
+        }
+    </style>
+    <script>
+        var range = document.querySelector('#ran')
+        var green = document.querySelector('.green')
+        var greenSpan = document.querySelector('.green span')
+        range.oninput = function () {
+            console.log(range.value)
+            green.style.width = range.value + '%'
+        }
+    </script>
+</body>
+
+</html>

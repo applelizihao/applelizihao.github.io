@@ -1,0 +1,22 @@
+{
+    "img": [
+        "http://pic6.58cdn.com.cn/jkbd/jjss/n_s12705035243046244042_e8cae8ba03645d62.jpg",
+        "http://pic6.58cdn.com.cn/jkbd/jjss/n_s12705035228776436042_e8cae8ba03645d62.jpg",
+        "http://pic4.58cdn.com.cn/jkbd/jjss/n_s12705035248125285042_e8cae8ba03645d62.jpg",
+        "http://pic2.58cdn.com.cn/jkbd/jjss/n_s12705035250323906142_e8cae8ba03645d62.jpg",
+        "http://pic3.58cdn.com.cn/jkbd/jjss/n_s12705035246799655092_e8cae8ba03645d62.jpg",
+        "http://pic5.58cdn.com.cn/jkbd/jjss/n_s12705035232365129072_e8cae8ba03645d62.jpg",
+        "http://pic7.58cdn.com.cn/jkbd/jjss/n_s12705035213086385282_e8cae8ba03645d62.jpg",
+        "http://pic2.58cdn.com.cn/jkbd/jjss/n_s12705035238071577292_e8cae8ba03645d62.jpg"
+    ],
+    "text": [
+        "示意车辆靠边停车信号",
+        "减速慢行信号",
+        "右转弯信号",
+        "变道信号",
+        "左转弯待转信号",
+        "停止信号",
+        "左转弯信号",
+        "直行信号"
+    ]
+}

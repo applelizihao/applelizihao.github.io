@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div class="page">
+        <div class="header">
+            <h1>登机口专用广播系统1.1</h1>
+        </div>
+        <div class="content">
+            <div class="text">
+                <input type="text" id="change-text" placeholder="输入需要播放的文字">
+            </div>
+            <div class="btn">
+                <button type="button" id="change-btn" class="btn btn-primary">转换</button>
+                <button type="button" id="play-btn" class="btn btn-primary">播放</button>
+                <button type="button" id="pasue-btn" class="btn btn-primary">暂停</button>
+                <button type="button" id="delete-btn" class="btn btn-primary">删除</button>
+            </div>
+            <div class="tips">
+                <h3>使用说明</h3>
+                <ul>
+                    <li>输入你需要播放的文字，点击转换</li>
+                    <li>转换完毕后，点击并播放会一直重复播放刚才的声音</li>
+                    <li>点击暂停，会停止当前语音循环状态</li>
+                    <li>点击删除可以删除缓存</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        $('#change-text').val('2312321312321')
+        $('#change-btn').click(function () {
+            window.speechSynthesis.cancel()
+            readOutLoud($('#change-text').val())
+        })
+        $('#play-btn').click(function () {
+            window.speechSynthesis.resume()
+        })
+        $('#pasue-btn').click(function () {
+            window.speechSynthesis.pause()
+        })
+
+
+        function readOutLoud(message) {
+            var speech = new SpeechSynthesisUtterance();
+            //设置朗读内容和属性
+            speech.text = message;
+            speech.volume = 1;
+            speech.rate = 1;
+            speech.pitch = 1;
+            speech.onend = function () {
+                console.log('听完了')
+                readOutLoud($('#change-text').val())
+            }
+            speech.onpause = function () {
+                console.log('你暂停了')
+            }
+            window.speechSynthesis.speak(speech);
+            console.log(speech)
+        }
+    </script>
+</body>
+
+</html>

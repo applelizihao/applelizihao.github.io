@@ -1,0 +1,56 @@
+html{
+    font-size: 62.5%;
+}
+body,h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
+body{
+    font-size: 1rem;
+}
+.page{
+    .header{
+        h1{
+            text-align: center;
+            background: blue;
+            color: white;
+            padding: 1rem 0;
+            font-size: 2rem;
+        }
+    }
+    .content{
+        padding: 2rem 0;
+        .text{
+            padding: 0 1rem;
+            input[type=text]{
+                font-size: 1.5rem;
+                width: 100%;
+                border: none;
+                border-bottom: 0.1rem solid red;
+                border-radius: 0;
+                &:focus{
+                    outline: none;
+                }
+            }
+        }
+        .btn{
+            display: flex;
+            flex-wrap: wrap;
+            &>button{
+                flex-basis: 100%;
+                display: flex;
+                justify-content: center;
+                margin: 1rem 0;
+            }
+        }
+        .tips{
+            margin-top: 2rem;
+            h3{
+                text-align: center;
+            }
+            li{
+                margin: 1rem 0;
+                list-style: decimal;
+            }
+        }
+    }
+}

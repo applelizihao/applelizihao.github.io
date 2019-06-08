@@ -39,6 +39,7 @@
     <script src="//code.jquery.com/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script>
+        let x = ''
         $('#change-text').val('2312321312321')
         $('#change-btn').click(function () {
             window.speechSynthesis.cancel()
@@ -50,18 +51,27 @@
         $('#pasue-btn').click(function () {
             window.speechSynthesis.pause()
         })
-
+        $('#delete-btn').click(function () {
+            $('#change-text').val('')
+            window.speechSynthesis.cancel()
+            window.speechSynthesis.pause()
+        })
 
         function readOutLoud(message) {
             var speech = new SpeechSynthesisUtterance();
+            //防止重复赋值
+            x=$('#change-text').val()
             //设置朗读内容和属性
             speech.text = message;
             speech.volume = 1;
             speech.rate = 1;
             speech.pitch = 1;
+            //防止重复
             speech.onend = function () {
-                console.log('听完了')
-                readOutLoud($('#change-text').val())
+                if (x == $('#change-text').val()) {
+                    console.log('听完了')
+                    readOutLoud($('#change-text').val())
+                }
             }
             speech.onpause = function () {
                 console.log('你暂停了')
